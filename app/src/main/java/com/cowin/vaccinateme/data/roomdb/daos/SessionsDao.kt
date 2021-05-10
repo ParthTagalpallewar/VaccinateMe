@@ -10,9 +10,9 @@ import com.cowin.vaccinateme.data.models.roomModels.RoomSessions
 interface SessionsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCenters(centers:List<RoomSessions>)
+    fun insertSessions(centers:List<RoomSessions>)
 
-    @Query("SELECT  * FROM ROOMCENTERS")
-    fun getAllCenters():List<RoomSessions>
+    @Query("SELECT  * FROM roomsessions")
+    fun getAllSession():List<RoomSessions>
 
 }
