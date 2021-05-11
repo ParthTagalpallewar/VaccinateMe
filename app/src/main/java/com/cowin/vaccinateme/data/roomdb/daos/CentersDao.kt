@@ -15,4 +15,7 @@ interface CentersDao {
 
     @Query("SELECT  * FROM ROOMCENTERS")
     fun getAllCenters():List<RoomCenters>
+
+    @Query("DELETE FROM RoomCenters")
+    fun deleteAllCenters()
 }

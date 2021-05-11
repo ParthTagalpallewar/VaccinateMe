@@ -15,7 +15,11 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.cowin.vaccinateme.ui.centers.CentersFragment"
         android:label="@string/title_centers"
-        tools:layout="@layout/fragment_centers" />
+        tools:layout="@layout/fragment_centers" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_sessions2"
+            app:destination="@id/sessions2" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -29,6 +33,15 @@
     <fragment
         android:id="@+id/addLocationFragment"
         android:name="com.cowin.vaccinateme.ui.location.AddLocationFragment"
-        android:label="fragment_add_location"
+        android:label="Add Pin Code"
         tools:layout="@layout/fragment_add_location" />
+    <fragment
+        android:id="@+id/sessions2"
+        android:name="com.cowin.vaccinateme.ui.sessions.Sessions"
+        android:label="Vaccine Sessions"
+        tools:layout="@layout/fragment_sessions" >
+        <argument
+            android:name="sessionId"
+            app:argType="string" />
+    </fragment>
 </navigation>

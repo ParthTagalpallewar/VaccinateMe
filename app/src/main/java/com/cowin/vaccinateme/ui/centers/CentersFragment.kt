@@ -4,28 +4,50 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cowin.vaccinateme.R
+import com.cowin.vaccinateme.data.repositionries.CentersRepositiory
 
-class CentersFragment : Fragment() {
+class CentersFragment : Fragment() , CentersAdapter.CenterClickListener{
 
-    private lateinit var centersViewModel: CentersViewModel
+  lateinit var  recyclerView :RecyclerView
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        centersViewModel =
-                ViewModelProvider(this).get(CentersViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_centers, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        centersViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
+        recyclerView = root.findViewById<RecyclerView>(R.id.center_recycler_view)
+        recyclerView.layoutManager = (LinearLayoutManager(requireContext()))
+        recyclerView.hasFixedSize()
+
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val repo = CentersRepositiory(requireContext())
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            val centersList =repo.getAllCenters()
+            val adapter = CentersAdapter(centersList,this@CentersFragment)
+            recyclerView.adapter = adapter
+
+        }
+
+    }
+
+    override fun onCenterCLickedListener(centerId: String) {
+        CentersFragmentDirections.actionNavigationDashboardToSessions2(centerId).apply {
+            findNavController().navigate(this)
+        }
+
     }
 }

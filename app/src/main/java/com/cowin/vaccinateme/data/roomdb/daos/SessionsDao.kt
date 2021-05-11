@@ -15,4 +15,10 @@ interface SessionsDao {
     @Query("SELECT  * FROM roomsessions")
     fun getAllSession():List<RoomSessions>
 
+    @Query("SELECT  * FROM roomsessions Where center_id = :centerId")
+    fun getSessionByCenterId(centerId:String):List<RoomSessions>
+
+    @Query("DELETE FROM roomsessions")
+    fun deleteAllSession()
+
 }
