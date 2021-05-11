@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class SplashScreen : AppCompatActivity() {
 
-    val delaySeconds: Long = 2000L
+    val delaySeconds: Long = 1000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
