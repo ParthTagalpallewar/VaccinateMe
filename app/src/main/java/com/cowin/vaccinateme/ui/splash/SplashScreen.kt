@@ -5,9 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.ui.main.MainActivity
+import com.google.android.gms.ads.MobileAds
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
 
 class SplashScreen : AppCompatActivity() {
 
@@ -16,6 +18,11 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+
+        MobileAds.initialize(
+            this
+        )
+
     }
 
     override fun onStart() {
