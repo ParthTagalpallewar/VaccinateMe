@@ -78,6 +78,8 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
                     val notify = checkToNotify(latestAppointments)
                     if (notify) {
                         sendNotification()
+                    }else{
+                        sendNotification()
                     }
                 }
 

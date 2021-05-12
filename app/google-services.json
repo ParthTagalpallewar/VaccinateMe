@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "721425827629",
+    "project_id": "vaccinate-me-45c6b",
+    "storage_bucket": "vaccinate-me-45c6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721425827629:android:5ce9e7ac198fd87be7f5a4",
+        "android_client_info": {
+          "package_name": "com.cowin.vaccinateme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721425827629-7kdiqlmic3dj11bja3b57if6oub19f2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cowin.vaccinateme",
+            "certificate_hash": "25e7f3649202bf3b771d817bbf23ee51c4741c33"
+          }
+        },
+        {
+          "client_id": "721425827629-fd2brne9phjm90aubmsvt3i8t1ogsdvg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvF9UdOf_jA-iAi0SAY9qg9KKx7h4_YHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721425827629-fd2brne9phjm90aubmsvt3i8t1ogsdvg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

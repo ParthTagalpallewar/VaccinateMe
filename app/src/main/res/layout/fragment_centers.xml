@@ -15,4 +15,42 @@
         tools:listitem="@layout/item_centers"/>
 
 
+    <RelativeLayout
+        android:id="@+id/centersAddPincodeLayout"
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/abc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please Add PinCode"
+            android:gravity="center"/>
+
+        <Button
+            android:layout_below="@+id/abc"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/center_add_btn"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:text="Add"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/emptySession"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Sessions Not Available"
+        android:gravity="center"/>
+
+
+
 </RelativeLayout>
