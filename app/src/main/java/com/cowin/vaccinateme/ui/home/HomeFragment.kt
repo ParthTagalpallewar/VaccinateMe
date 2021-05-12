@@ -1,5 +1,7 @@
 package com.cowin.vaccinateme.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cowin.vaccinateme.R
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
@@ -31,6 +34,7 @@ class HomeFragment : Fragment() {
         website.setOnClickListener {
 
             val cowinWebsite = "https://www.cowin.gov.in/home"
+
             Intent(Intent.ACTION_VIEW, Uri.parse(cowinWebsite)).apply {
                 startActivity(this)
             }
