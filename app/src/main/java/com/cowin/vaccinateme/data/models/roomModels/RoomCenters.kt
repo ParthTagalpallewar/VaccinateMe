@@ -6,9 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class RoomCenters (
 
-        @PrimaryKey(autoGenerate = true)
-        val centerRoomId:Int,
-
+        @PrimaryKey(autoGenerate = false)
         val center_id:String,
 
         val name:String,

@@ -14,7 +14,9 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.data.models.CowinCentersResponse
+import com.cowin.vaccinateme.data.models.Session
 import com.cowin.vaccinateme.data.models.roomModels.RoomAppointmentsModel
+import com.cowin.vaccinateme.data.models.roomModels.RoomCenters
 import com.cowin.vaccinateme.data.models.roomModels.RoomSessions
 import com.cowin.vaccinateme.data.repositionries.CentersRepositiory
 import com.cowin.vaccinateme.data.repositionries.UserDataRepositories
@@ -23,11 +25,17 @@ import com.cowin.vaccinateme.utils.getAppointsModel
 import com.cowin.vaccinateme.utils.getCurrentDate
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import okhttp3.internal.userAgent
 import retrofit2.Response
+
 
 class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
 
+    lateinit var userRepo: UserDataRepositories
+    lateinit var centersRepositories: CentersRepositiory
+    lateinit var centersInRoomDatabase: List<RoomCenters>
+    lateinit var sessionsInRoomDatabase: List<RoomSessions>
 
     @SuppressLint("RestrictedApi")
     override fun doWork(): Result {
@@ -42,8 +50,11 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
     private fun work() {
 
         GlobalScope.launch {
-            val userRepo = UserDataRepositories(applicationContext)
-            val centersRepositories = CentersRepositiory(applicationContext)
+            userRepo = UserDataRepositories(applicationContext)
+            centersRepositories = CentersRepositiory(applicationContext)
+            centersInRoomDatabase = centersRepositories.getAllCenters()
+            sessionsInRoomDatabase = centersRepositories.getAllSessions()
+
 
             userRepo.getUserData()?.apply {
 
@@ -56,29 +67,26 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
 
 
                     //getting centers Available in room
-                    val centersInRoomDatabase = centersRepositories.getAllCenters()
-                    val sessionsInRoomDatabase = centersRepositories.getAllSessions()
-
 
                     //if new user or no data in room
                     if (centersInRoomDatabase.isEmpty()) {
                         //Add Data inside room
-                        saveAppointmentsInDatabase(latestAppointments, centersRepositories)
-
                         val notify = checkToNotify(latestAppointments)
+                        saveAppointmentsInDatabase(latestAppointments)
+
                         if (notify) {
                             sendNotification()
                         }
 
                     } else {
 
+                        val notify = checkToNotify(latestAppointments)
                         if (latestAppointmentModel != null) {
                             if (checkUpdateNeeded(latestAppointmentModel, sessionsInRoomDatabase)) {
-                                saveAppointmentsInDatabase(latestAppointments, centersRepositories)
+                                saveAppointmentsInDatabase(latestAppointments)
                             }
                         }
 
-                        val notify = checkToNotify(latestAppointments)
                         if (notify) {
                             sendNotification()
                         }
@@ -126,6 +134,7 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
 
         if (data != null) {
             for (centers in data) {
+
                 Log.e(
                     "centersLog", """logAppointments:
                     |
@@ -135,11 +144,15 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
                     | """"
                 )
                 for (session in centers.sessions) {
+                    if (session.available_capacity == "0") {
+                        continue
+                    }
                     Log.e(
                         "centersLog", """logAppointments:
                     |
                     |Session ID :-  ${session.session_id} 
                     |Session Size : - ${session.date}
+                    |Capavity:- ${session.available_capacity}
                     |
                     | """"
                     )
@@ -194,14 +207,34 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
 
     }
 
+    private fun alreadySaved(session: RoomSessions): Boolean {
+        for (i in sessionsInRoomDatabase) {
+            if (i.session_id == session.session_id) {
+                Log.e("TAG", "DEBUG: >>>>>>>>>>>>> ${i.available_capacity} ${session.available_capacity} ${session.session_id}")
+                if (session.available_capacity > i.available_capacity) {
+                    return false
+                } else {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
     private suspend fun checkToNotify(response: Response<CowinCentersResponse>): Boolean {
         val sessions = response.body()?.getAppointsModel()?.sessionsList
 
         if (sessions != null) {
             for (session in sessions) {
-                if (session.available_capacity.toInt() > 0) {
-                    return true
+                if (session.available_capacity.toInt() == 0) {
+                    continue
                 }
+
+                if (alreadySaved(session)) {
+                    continue
+                }
+
+                return true
             }
 
             return false
@@ -211,9 +244,8 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
     }
 
     private suspend fun saveAppointmentsInDatabase(
-        response: Response<CowinCentersResponse>,
-        centersRepositories: CentersRepositiory
-    ) {
+        response: Response<CowinCentersResponse>) {
+
         response.body()?.getAppointsModel()?.apply {
             centersRepositories.apply {
                 deleteAllData()

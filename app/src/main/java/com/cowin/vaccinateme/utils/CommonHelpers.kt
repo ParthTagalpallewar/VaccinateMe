@@ -48,9 +48,9 @@ suspend fun CowinCentersResponse.getAppointsModel()  = withContext(Dispatchers.D
 
 
 operator fun Session.plus(centerId: String): RoomSessions {
-    return RoomSessions(0, centerId, session_id, date, available_capacity, min_age_limit, vaccine)
+    return RoomSessions(session_id, centerId, date, available_capacity, min_age_limit, vaccine)
 }
 
 fun Centers.getRoomCenter():RoomCenters{
-    return RoomCenters(0,center_id,name,sessions.size)
+    return RoomCenters(center_id,name,sessions.size)
 }

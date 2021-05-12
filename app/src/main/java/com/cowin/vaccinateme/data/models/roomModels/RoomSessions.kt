@@ -6,12 +6,10 @@ import androidx.room.PrimaryKey
 @Entity
 data class RoomSessions(
 
-        @PrimaryKey(autoGenerate = true)
-        val sessionsRoomId:Int,
+        @PrimaryKey(autoGenerate = false)
+        val session_id: String,
 
         val center_id:String,
-
-        val session_id: String,
         val date: String,
         val available_capacity: String,
         val min_age_limit: String,
