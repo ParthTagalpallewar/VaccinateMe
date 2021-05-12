@@ -63,12 +63,9 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
                 logAppointments(latestAppointments)
 
                 if (latestAppointments.isSuccessful) {
+
                     val latestAppointmentModel = latestAppointments.body()?.getAppointsModel()
 
-
-                    //getting centers Available in room
-
-                    //if new user or no data in room
                     if (centersInRoomDatabase.isEmpty()) {
                         //Add Data inside room
                         val notify = checkToNotify(latestAppointments)
@@ -99,7 +96,6 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
 
 
     }
-
 
     private fun checkUpdateNeeded(
         latestAppointmentModel: RoomAppointmentsModel,
