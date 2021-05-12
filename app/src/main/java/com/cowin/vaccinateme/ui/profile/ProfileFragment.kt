@@ -1,5 +1,7 @@
 package com.cowin.vaccinateme.ui.profile
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +35,8 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        visionaryAd()
+
         getUserData()
 
         profile_btn_addPin.setOnClickListener {
@@ -55,6 +59,15 @@ class ProfileFragment : Fragment() {
                     profile_tv_showPin.text = it.pincode
                 }
             }
+        }
+    }
+    fun visionaryAd(){
+        visionary.setOnClickListener {
+            Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://play.google.com/store/apps/details?id=com.reselling.visionary")
+                requireContext().startActivity(this)
+            }
+
         }
     }
 }

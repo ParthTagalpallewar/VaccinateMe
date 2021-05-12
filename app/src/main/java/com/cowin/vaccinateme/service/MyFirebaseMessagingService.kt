@@ -47,9 +47,10 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
             )
 
             notificationChannel.apply {
-                lightColor = Color.BLUE
+                lightColor = applicationContext.resources.getColor(R.color.colorPrimary)
                 enableVibration(true)
             }
+
 
             notificationManager.createNotificationChannel(notificationChannel)
 
@@ -57,11 +58,11 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
             builder.apply {
                 setContentTitle(title)
                 setContentText(body)
-                setSmallIcon(R.drawable.ic_launcher_foreground)
+                setSmallIcon(R.drawable.logo2)
                 setLargeIcon(
                     BitmapFactory.decodeResource(
                         applicationContext.resources,
-                        R.drawable.ic_launcher_background
+                        R.drawable.logo_big
                     )
                 )
                 setContentIntent(pendingIntent)

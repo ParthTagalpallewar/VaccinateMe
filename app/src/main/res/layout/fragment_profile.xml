@@ -50,6 +50,13 @@
 
 
 
+    <ImageView
+        android:id="@+id/visionary"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:src="@drawable/visionary"
+        android:layout_alignParentBottom="true"/>
+
 
 
 

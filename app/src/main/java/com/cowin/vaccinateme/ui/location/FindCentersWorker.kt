@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
-        Worker(context, workerParams) {
+    Worker(context, workerParams) {
 
 
     @SuppressLint("RestrictedApi")
@@ -51,46 +51,52 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
                 val latestAppointments = userRepo.getAppointments(pincode, getCurrentDate())
                 logAppointments(latestAppointments)
 
-
-                val latestAppointmentModel = latestAppointments.body()?.getAppointsModel()
-
-
-                //getting centers Available in room
-                val centersInRoomDatabase = centersRepositories.getAllCenters()
-                val sessionsInRoomDatabase = centersRepositories.getAllSessions()
+                if (latestAppointments.isSuccessful) {
+                    val latestAppointmentModel = latestAppointments.body()?.getAppointsModel()
 
 
-                //if new user or no data in room
-                if (centersInRoomDatabase.isEmpty()) {
-                    //Add Data inside room
-                    saveAppointmentsInDatabase(latestAppointments, centersRepositories)
+                    //getting centers Available in room
+                    val centersInRoomDatabase = centersRepositories.getAllCenters()
+                    val sessionsInRoomDatabase = centersRepositories.getAllSessions()
 
-                }
 
-                else {
+                    //if new user or no data in room
+                    if (centersInRoomDatabase.isEmpty()) {
+                        //Add Data inside room
+                        saveAppointmentsInDatabase(latestAppointments, centersRepositories)
 
-                    if (latestAppointmentModel != null) {
-                        if(checkUpdateNeeded(latestAppointmentModel, sessionsInRoomDatabase)){
-                            saveAppointmentsInDatabase(latestAppointments, centersRepositories)
+                        val notify = checkToNotify(latestAppointments)
+                        if (notify) {
+                            sendNotification()
+                        }
+
+                    } else {
+
+                        if (latestAppointmentModel != null) {
+                            if (checkUpdateNeeded(latestAppointmentModel, sessionsInRoomDatabase)) {
+                                saveAppointmentsInDatabase(latestAppointments, centersRepositories)
+                            }
+                        }
+
+                        val notify = checkToNotify(latestAppointments)
+                        if (notify) {
+                            sendNotification()
                         }
                     }
 
-                    val notify = checkToNotify(latestAppointments)
-                    if (notify) {
-                        sendNotification()
-                    }else{
-                        sendNotification()
-                    }
+
                 }
-
-
             }
         }
 
 
     }
 
-    private fun checkUpdateNeeded(latestAppointmentModel: RoomAppointmentsModel, sessionsInRoomDatabase: List<RoomSessions>): Boolean {
+
+    private fun checkUpdateNeeded(
+        latestAppointmentModel: RoomAppointmentsModel,
+        sessionsInRoomDatabase: List<RoomSessions>
+    ): Boolean {
         for (networkSession in latestAppointmentModel.sessionsList) {
             val roomSession = getRoomSession(networkSession, sessionsInRoomDatabase)
 
@@ -103,9 +109,12 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
         return false
     }
 
-    private fun getRoomSession(networkSession: RoomSessions, sessionsInRoomDatabase: List<RoomSessions>): RoomSessions? {
-        for (sessions in sessionsInRoomDatabase){
-            if ((sessions.center_id == networkSession.center_id) and (sessions.date == networkSession.date)){
+    private fun getRoomSession(
+        networkSession: RoomSessions,
+        sessionsInRoomDatabase: List<RoomSessions>
+    ): RoomSessions? {
+        for (sessions in sessionsInRoomDatabase) {
+            if ((sessions.center_id == networkSession.center_id) and (sessions.date == networkSession.date)) {
                 return sessions
             }
         }
@@ -115,21 +124,25 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
     private fun logAppointments(latestAppointments: Response<CowinCentersResponse>) {
         val data = latestAppointments.body()?.centers
 
-        if (data!= null){
-            for (centers in data){
-                Log.e("centersLog", """logAppointments:
+        if (data != null) {
+            for (centers in data) {
+                Log.e(
+                    "centersLog", """logAppointments:
                     |
                     |Centers Name :-  ${centers.name} 
                     |Session Size : - ${centers.sessions.size}
                     |
-                    | """" )
-                for (session in centers.sessions){
-                    Log.e("centersLog", """logAppointments:
+                    | """"
+                )
+                for (session in centers.sessions) {
+                    Log.e(
+                        "centersLog", """logAppointments:
                     |
                     |Session ID :-  ${session.session_id} 
                     |Session Size : - ${session.date}
                     |
-                    | """" )
+                    | """"
+                    )
                 }
 
             }
@@ -137,17 +150,25 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
     }
 
     private fun sendNotification() {
-        val notificationManager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         val intent = Intent(applicationContext, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent =
+            PendingIntent.getActivity(
+                applicationContext,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
 
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            val notificationChannel = NotificationChannel("channelId", "description", NotificationManager.IMPORTANCE_HIGH)
+            val notificationChannel =
+                NotificationChannel("channelId", "description", NotificationManager.IMPORTANCE_HIGH)
 
             notificationChannel.apply {
-                lightColor = Color.BLUE
+                lightColor = applicationContext.resources.getColor(R.color.colorPrimary)
                 enableVibration(true)
             }
 
@@ -155,10 +176,15 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
 
             val builder = Notification.Builder(applicationContext, "channelId")
             builder.apply {
-                setContentTitle("NOTIFICATION USING ")
-                setContentText("Test Notification")
-                setSmallIcon(R.drawable.ic_launcher_foreground)
-                setLargeIcon(BitmapFactory.decodeResource(applicationContext.resources, R.drawable.ic_launcher_background))
+                setContentTitle("Vaccines Available!")
+                setContentText("Looking Like Vaccines Are Available You, Click To Check")
+                setSmallIcon(R.drawable.logo2)
+                setLargeIcon(
+                    BitmapFactory.decodeResource(
+                        applicationContext.resources,
+                        R.drawable.logo_big
+                    )
+                )
                 setContentIntent(pendingIntent)
             }
 
@@ -184,7 +210,10 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
         }
     }
 
-    private suspend fun saveAppointmentsInDatabase(response: Response<CowinCentersResponse>, centersRepositories: CentersRepositiory) {
+    private suspend fun saveAppointmentsInDatabase(
+        response: Response<CowinCentersResponse>,
+        centersRepositories: CentersRepositiory
+    ) {
         response.body()?.getAppointsModel()?.apply {
             centersRepositories.apply {
                 deleteAllData()

@@ -1,17 +1,17 @@
 package com.cowin.vaccinateme.ui.splash
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import com.cowin.vaccinateme.ui.main.MainActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.cowin.vaccinateme.R
-import com.cowin.vaccinateme.utils.move
+import com.cowin.vaccinateme.ui.main.MainActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashScreen : AppCompatActivity() {
 
-    val delaySeconds:Long = 2000L
+    val delaySeconds: Long = 2000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,11 @@ class SplashScreen : AppCompatActivity() {
 
             delay(delaySeconds)
 
-            this@SplashScreen.move(MainActivity::class.java,true)
+
+            val intent = Intent(this@SplashScreen, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+            finish()
 
         }
     }
