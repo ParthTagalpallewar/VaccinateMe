@@ -13,6 +13,8 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.data.repositionries.UserDataRepositories
+import com.cowin.vaccinateme.utils.AdsManager
+import com.google.android.gms.ads.AdView
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.coroutines.flow.collect
 import java.lang.Appendable
@@ -27,9 +29,13 @@ class ProfileFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        var root = inflater.inflate(R.layout.fragment_profile, container, false)
 
+        val adsManager = AdsManager(requireContext())
+        val mAdView = root.findViewById<AdView>(R.id.adViewProfile)
+        adsManager.createAds(mAdView)
 
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

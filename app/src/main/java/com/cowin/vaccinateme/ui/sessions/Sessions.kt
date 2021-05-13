@@ -15,6 +15,8 @@ import com.cowin.vaccinateme.data.models.roomModels.RoomSessions
 import com.cowin.vaccinateme.data.repositionries.CentersRepositiory
 import com.cowin.vaccinateme.data.repositionries.UserDataRepositories
 import com.cowin.vaccinateme.ui.centers.SessionAdapter
+import com.cowin.vaccinateme.utils.AdsManager
+import com.google.android.gms.ads.AdView
 import kotlinx.android.synthetic.main.fragment_sessions.*
 
 class Sessions : Fragment() {
@@ -30,6 +32,10 @@ class Sessions : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_sessions, container, false)
+
+        val adsManager = AdsManager(requireContext())
+        val mAdView = root.findViewById<AdView>(R.id.adViewSessions)
+        adsManager.createAds(mAdView)
 
         centerId = arguments?.getString("sessionId")!!
 

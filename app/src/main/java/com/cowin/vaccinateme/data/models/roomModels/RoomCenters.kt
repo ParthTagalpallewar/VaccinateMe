@@ -11,6 +11,7 @@ data class RoomCenters (
 
         val name:String,
 
-        val sessionCounts:Int
+        val sessionCounts:Int,
 
+        val totalAvailability: Int
         )

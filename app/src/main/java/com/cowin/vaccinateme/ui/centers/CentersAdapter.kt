@@ -1,5 +1,8 @@
 package com.cowin.vaccinateme.ui.centers
 
+import android.app.PendingIntent.getActivity
+import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +26,15 @@ class CentersAdapter(val centersList:List<RoomCenters>,val onCenterClickListener
 
         fun bindData(center:RoomCenters){
             itemView.item_centersName.text = center.name
-            itemView.item_session_number.text = center.sessionCounts.toString()
+            itemView.item_session_number.text = "${center.sessionCounts} Sessions"
+            itemView.item_availability.text = "${center.totalAvailability} slots available"
+
+            //TODO How to get the R.colors.teal_200 with no context?
+            if (center.totalAvailability > 0) {
+                itemView.item_availability.setTextColor(Color.parseColor("#FF03DAC5"))
+            } else {
+                itemView.item_availability.setTextColor(Color.parseColor("#de6e71"))
+            }
         }
     }
 

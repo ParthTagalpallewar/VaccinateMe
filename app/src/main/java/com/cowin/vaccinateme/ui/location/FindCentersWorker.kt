@@ -148,7 +148,7 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
                     |
                     |Session ID :-  ${session.session_id} 
                     |Session Size : - ${session.date}
-                    |Capavity:- ${session.available_capacity}
+                    |Capacity:- ${session.available_capacity}
                     |
                     | """"
                     )
@@ -186,7 +186,7 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
             val builder = Notification.Builder(applicationContext, "channelId")
             builder.apply {
                 setContentTitle("Vaccines Available!")
-                setContentText("Looking Like Vaccines Are Available You, Click To Check")
+                setContentText("New slots available for booking, Click To Check")
                 setSmallIcon(R.drawable.logo2)
                 setLargeIcon(
                     BitmapFactory.decodeResource(

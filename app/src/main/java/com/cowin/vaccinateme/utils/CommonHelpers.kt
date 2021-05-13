@@ -52,5 +52,9 @@ operator fun Session.plus(centerId: String): RoomSessions {
 }
 
 fun Centers.getRoomCenter():RoomCenters{
-    return RoomCenters(center_id,name,sessions.size)
+    var num_slots: Int = 0
+    for (s in sessions) {
+        num_slots += s.available_capacity.toInt()
+    }
+    return RoomCenters(center_id,name,sessions.size, num_slots)
 }

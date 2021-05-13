@@ -6,54 +6,76 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         app:cardElevation="10dp"
         android:layout_margin="5dp"
         app:cardCornerRadius="8dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="213dp">
 
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Name - "
-                android:textSize="18dp" />
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Center:"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/item_centersName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:layout_toRightOf="@id/name"
                 android:hint="center name here"
-                android:textSize="18dp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <!--Session Numbers-->
 
             <TextView
-                android:id="@+id/sessions"
-                android:layout_below="@+id/name"
+                android:id="@+id/item_session_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Sessions  - "
-                android:textSize="18dp" />
+                android:layout_below="@id/name"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="0 Sessions"
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/item_session_number"
-                android:layout_width="match_parent"
+                android:id="@+id/item_availability"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_below="@id/name"
-                android:layout_toRightOf="@id/sessions"
-                android:hint="Number of sessions"
-                android:textSize="18dp" />
-
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toEndOf="@+id/item_session_number"
+                android:layout_toRightOf="@+id/item_session_number"
+                android:hint="Available slots"
+                android:text="0 Slots available"
+                android:textSize="16sp" />
 
 
         </RelativeLayout>

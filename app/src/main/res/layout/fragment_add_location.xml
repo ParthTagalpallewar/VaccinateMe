@@ -9,53 +9,53 @@
 
 
     <androidx.cardview.widget.CardView
-        android:background="@color/colorwhite"
         android:id="@+id/addApp_card"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="200dp"
-        android:layout_width="match_parent"
+        android:background="@color/colorwhite"
         app:cardCornerRadius="9dp">
 
         <RelativeLayout
-            android:layout_height="match_parent"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tv_providePackageName"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
                 android:text="Enter Your Pincode here"
                 android:textColor="@color/colortext"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
             <EditText
-                android:hint="eg. 110001 "
                 android:id="@+id/add_et_package"
-                android:layout_below="@id/tv_providePackageName"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="23dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_providePackageName"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:hint="eg. 110001 "
                 android:padding="10dp"
                 android:singleLine="true"
                 android:textSize="17sp" />
 
             <Button
-                android:background="@drawable/button"
                 android:id="@+id/add_addapp"
-                android:layout_below="@id/add_et_package"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/add_et_package"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button"
                 android:text="Add"
                 android:textColor="@color/colorwhite"
                 android:textSize="20dp" />

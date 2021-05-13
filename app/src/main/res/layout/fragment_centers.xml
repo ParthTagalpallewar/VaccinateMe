@@ -7,12 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.centers.CentersFragment">
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewCenters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:adSize="BANNER"
+        app:adUnitId="@string/test_ad_unit_id_banner" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/center_recycler_view"
         android:layout_width="match_parent"
-        android:layout_margin="5dp"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_centers"/>
+        android:layout_below="@id/adViewCenters"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        tools:listitem="@layout/item_centers" />
 
 
     <RelativeLayout
@@ -50,7 +63,5 @@
         android:layout_centerInParent="true"
         android:text="Sessions Not Available"
         android:gravity="center"/>
-
-
 
 </RelativeLayout>

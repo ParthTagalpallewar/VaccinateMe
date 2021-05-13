@@ -12,6 +12,7 @@ open class AdsManager {
 
     private lateinit var context:Context
     open lateinit var  interstitialAd: InterstitialAd
+    private val TAG = "AdsManager"
 
     constructor(context: Context) {
         this.context = context
@@ -26,12 +27,12 @@ open class AdsManager {
         adView.setAdListener(object : AdListener() {
             override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                 super.onAdFailedToLoad(loadAdError)
-                Toast.makeText(context, "ad load failed" + loadAdError.code, Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "ad load failed" + loadAdError.code)
             }
 
             override fun onAdLoaded() {
                 super.onAdLoaded()
-                Toast.makeText(context, "ads is loaded", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "ads is loaded")
             }
         })
         adView.loadAd(adRequest)
@@ -41,13 +42,6 @@ open class AdsManager {
     /*
 
     //For Industrial Ads
-    open fun createInterstitialAds(): InterstitialAd? {
-        val adRequest = AdRequest.Builder().build()
-        interstitialAd = InterstitialAd()
-        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
-        interstitialAd.loadAd(adRequest)
-        return interstitialAd
-    }
 
     open fun createUnifiedAds(unitid: Int, listening: AdUnifiedListening?) {
         val builder = AdLoader.Builder(context, context.getString(unitid))

@@ -10,6 +10,9 @@ import com.cowin.vaccinateme.data.models.roomModels.RoomSessions
 import kotlinx.android.synthetic.main.item_centers.view.*
 import kotlinx.android.synthetic.main.item_centers.view.item_centersName
 import kotlinx.android.synthetic.main.item_sessions.view.*
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class SessionAdapter(val sessionsList:List<RoomSessions>) :RecyclerView.Adapter<SessionAdapter.CenterViewHolder>() {
 
@@ -20,11 +23,11 @@ class SessionAdapter(val sessionsList:List<RoomSessions>) :RecyclerView.Adapter<
             itemView.itemSession_tv_vaccine.text = center.vaccine
             itemView.itemSession_tv_minAge.text = center.min_age_limit
 
-            val date = center.date
-            val singleDate = date.split("-")
+            val singleDate = center.date.split("-")
+            val date = SimpleDateFormat("mm-dd-yyyy").parse(center.date)
             itemView.itemSession_tv_year.text = singleDate[2]
             itemView.itemSession_tv_date.text = singleDate[0]
-            itemView.itemSession_tv_month.text = singleDate[1]
+            itemView.itemSession_tv_month.text = SimpleDateFormat("MMM").format(date)
         }
     }
 
