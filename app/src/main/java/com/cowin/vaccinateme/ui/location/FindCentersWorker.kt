@@ -191,7 +191,7 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
                 setLargeIcon(
                     BitmapFactory.decodeResource(
                         applicationContext.resources,
-                        R.drawable.logo_big
+                        R.drawable.logo2
                     )
                 )
                 setContentIntent(pendingIntent)

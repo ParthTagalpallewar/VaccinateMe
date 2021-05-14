@@ -62,7 +62,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
                 setLargeIcon(
                     BitmapFactory.decodeResource(
                         applicationContext.resources,
-                        R.drawable.logo_big
+                        R.drawable.logo2
                     )
                 )
                 setContentIntent(pendingIntent)
