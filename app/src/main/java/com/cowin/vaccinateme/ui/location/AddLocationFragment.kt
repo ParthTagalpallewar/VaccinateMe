@@ -14,6 +14,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.data.models.SettingsModel
+import com.cowin.vaccinateme.data.repositionries.CentersRepositiory
 import com.cowin.vaccinateme.data.repositionries.UserDataRepositories
 import com.cowin.vaccinateme.utils.ResultIntestrialAdProvider
 import com.cowin.vaccinateme.utils.getCurrentDate
@@ -74,6 +75,9 @@ class AddLocationFragment : DialogFragment() {
                                 showToast("Pincode Updated Successfully")
                             }
                         }
+
+                        val centersRepositories = CentersRepositiory(requireContext())
+                        centersRepositories.deleteAllData()
 
                         val sendLogsWorkRequest = PeriodicWorkRequestBuilder<FindCentersWorker>(15, TimeUnit.MINUTES).build()
                         WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(

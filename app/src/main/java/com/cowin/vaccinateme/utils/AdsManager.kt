@@ -43,7 +43,7 @@ open class AdsManager {
 
 }
 
-fun Context.showIntestrialAds(adKey:String="ca-app-pub-3940256099942544/1033173712") :MutableLiveData<ResultIntestrialAdProvider>{
+fun Context.showIntestrialAds(adKey:String = "ca-app-pub-3940256099942544/1033173712") :MutableLiveData<ResultIntestrialAdProvider>{
     var adRequest = AdRequest.Builder().build()
 
     val liveData = MutableLiveData<ResultIntestrialAdProvider>()
