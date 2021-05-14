@@ -1,21 +1,16 @@
 package com.cowin.vaccinateme.ui.splash
 
-import android.animation.TimeInterpolator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.view.animation.ScaleAnimation
-import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.ui.main.MainActivity
-import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -57,10 +52,6 @@ class SplashScreen : AppCompatActivity() {
                 view.animation = anim
             }
         }
-
-        MobileAds.initialize(
-            this
-        )
     }
 
     override fun onStart() {

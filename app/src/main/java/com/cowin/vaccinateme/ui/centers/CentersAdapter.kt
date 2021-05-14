@@ -1,8 +1,6 @@
 package com.cowin.vaccinateme.ui.centers
 
-import android.content.ContentValues.TAG
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,13 +53,13 @@ class CentersAdapter(
             (holder as CenterViewHolder).bindData(roomCenter)
 
         } else {
-            loadAds(holder)
+            loadAds(holder, holder.itemView.context.getString(R.string.ad_unit_id_native))
         }
     }
 
-    private fun loadAds(holder: RecyclerView.ViewHolder) {
+    private fun loadAds(holder: RecyclerView.ViewHolder, adUnitKey: String) {
         val adLoader =
-            AdLoader.Builder(holder.itemView.context, "ca-app-pub-3940256099942544/2247696110")
+            AdLoader.Builder(holder.itemView.context, adUnitKey)
                 .forNativeAd { nativeAd -> // Show the ad.
                     val styles = NativeTemplateStyle.Builder().build()
                     val template: TemplateView = (holder as AdViewHolder).templateView

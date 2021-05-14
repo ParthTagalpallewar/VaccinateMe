@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cowin.vaccinateme.R
-import com.cowin.vaccinateme.data.models.roomModels.RoomCenters
 import com.cowin.vaccinateme.data.models.roomModels.RoomSessions
 import com.cowin.vaccinateme.utils.NUM_ROWS_FOR_AD
 import com.cowin.vaccinateme.utils.templateAds.NativeTemplateStyle
@@ -50,7 +49,7 @@ class SessionAdapter(val sessionsList: ArrayList<Any>) : RecyclerView.Adapter<Re
             (holder as SessionAdapter.CenterViewHolder).bindData(roomCenter)
 
         } else {
-            loadAds(holder)
+            loadAds(holder, holder.itemView.context.getString(R.string.ad_unit_id_native))
         }
     }
 
@@ -80,9 +79,9 @@ class SessionAdapter(val sessionsList: ArrayList<Any>) : RecyclerView.Adapter<Re
         }
     }
 
-    private fun loadAds(holder: RecyclerView.ViewHolder) {
+    private fun loadAds(holder: RecyclerView.ViewHolder, adUnitKey: String) {
         val adLoader =
-            AdLoader.Builder(holder.itemView.context, "ca-app-pub-3940256099942544/2247696110")
+            AdLoader.Builder(holder.itemView.context, adUnitKey)
                 .forNativeAd { nativeAd -> // Show the ad.
                     val styles = NativeTemplateStyle.Builder().build()
                     val template: TemplateView = (holder as AdViewHolder).templateView

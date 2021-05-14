@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.utils.AdsManager
@@ -16,10 +15,8 @@ import com.cowin.vaccinateme.utils.templateAds.NativeTemplateStyle
 import com.cowin.vaccinateme.utils.templateAds.TemplateView
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.nativead.NativeAd
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_sessions.*
 
 class HomeFragment : Fragment() {
 
@@ -75,7 +72,7 @@ class HomeFragment : Fragment() {
 
         }
 
-        val adLoader = AdLoader.Builder(requireContext(), "ca-app-pub-3940256099942544/2247696110")
+        val adLoader = AdLoader.Builder(requireContext(), getString(R.string.ad_unit_id_native))
             .forNativeAd { ad: NativeAd ->
                 val styles = NativeTemplateStyle.Builder().build()
 
@@ -101,18 +98,3 @@ class HomeFragment : Fragment() {
 
     }
 }
-
-/*val adLoader = AdLoader.Builder(this, "ca-app-pub-3940256099942544/2247696110")
-    .forNativeAd { ad : NativeAd ->
-        // Show the ad.
-    }
-    .withAdListener(object : AdListener() {
-        override fun onAdFailedToLoad(adError: LoadAdError) {
-            // Handle the failure by logging, altering the UI, and so on.
-        }
-    })
-    .withNativeAdOptions(NativeAdOptions.Builder()
-            // Methods in the NativeAdOptions.Builder class can be
-            // used here to specify individual options settings.
-            .build())
-    .build()*/

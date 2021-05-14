@@ -1,7 +1,6 @@
 package com.cowin.vaccinateme.ui.location
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,6 @@ import com.cowin.vaccinateme.utils.showIntestrialAds
 import kotlinx.android.synthetic.main.fragment_add_location.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit
@@ -98,7 +96,7 @@ class AddLocationFragment : DialogFragment() {
             }
         }
 
-        requireContext().showIntestrialAds().observe(viewLifecycleOwner){
+        requireContext().showIntestrialAds(getString(R.string.ad_unit_id_interstitial)).observe(viewLifecycleOwner){
             when(it){
                 is ResultIntestrialAdProvider.Success -> {
                     it.interstitialAd.show(requireActivity())

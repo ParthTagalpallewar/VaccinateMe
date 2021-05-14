@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         app:adSize="BANNER"
         android:visibility="gone"
-        app:adUnitId="@string/test_ad_unit_id_banner" />
+        app:adUnitId="@string/ad_unit_id_banner" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/center_recycler_view"

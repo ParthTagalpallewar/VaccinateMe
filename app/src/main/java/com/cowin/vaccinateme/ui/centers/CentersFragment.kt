@@ -1,7 +1,6 @@
 package com.cowin.vaccinateme.ui.centers
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +14,8 @@ import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.data.models.roomModels.RoomCenters
 import com.cowin.vaccinateme.data.repositionries.CentersRepositiory
 import com.cowin.vaccinateme.data.repositionries.UserDataRepositories
-import com.cowin.vaccinateme.utils.AdsManager
 import com.cowin.vaccinateme.utils.NUM_ROWS_FOR_AD
-import com.cowin.vaccinateme.utils.templateAds.NativeTemplateStyle
 import com.cowin.vaccinateme.utils.templateAds.TemplateView
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.fragment_centers.*
 
 class CentersFragment : Fragment(), CentersAdapter.CenterClickListener {
@@ -36,13 +31,7 @@ class CentersFragment : Fragment(), CentersAdapter.CenterClickListener {
 
         val root = inflater.inflate(R.layout.fragment_centers, container, false)
 
-        val adsManager = AdsManager(requireContext())
-        val mAdView = root.findViewById<AdView>(R.id.adViewCenters)
-        adsManager.createAds(mAdView)
-
         addPincodeRelativeLayout = root.findViewById(R.id.centersAddPincodeLayout)
-
-        MobileAds.initialize(requireContext())
 
         recyclerView = root.findViewById<RecyclerView>(R.id.center_recycler_view)
         recyclerView.layoutManager = (LinearLayoutManager(requireContext()))
