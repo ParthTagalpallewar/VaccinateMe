@@ -1,6 +1,7 @@
 package com.cowin.vaccinateme.ui.home
 
 import android.content.Intent
+import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.nativead.NativeAd
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_sessions.*
 
 class HomeFragment : Fragment() {
 
@@ -50,6 +52,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        website.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         website.setOnClickListener {
 
             val cowinWebsite = "https://www.cowin.gov.in/home"

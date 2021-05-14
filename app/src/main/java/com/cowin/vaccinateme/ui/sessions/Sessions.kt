@@ -1,6 +1,7 @@
 package com.cowin.vaccinateme.ui.sessions
 
 import android.content.Intent
+import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -38,6 +39,13 @@ class Sessions : Fragment() {
         recyclerView.layoutManager = (LinearLayoutManager(requireContext()))
         recyclerView.hasFixedSize()
 
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        website2.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         website2.setOnClickListener {
 
             val cowinWebsite = "https://www.cowin.gov.in/home"
@@ -46,14 +54,6 @@ class Sessions : Fragment() {
                 startActivity(this)
             }
         }
-
-        return root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
 
         val repo = CentersRepositiory(requireContext())
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
