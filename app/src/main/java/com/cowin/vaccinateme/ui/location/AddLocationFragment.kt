@@ -101,7 +101,7 @@ class AddLocationFragment : DialogFragment() {
                 is ResultIntestrialAdProvider.Success -> {
                     it.interstitialAd.show(requireActivity())
                 }is ResultIntestrialAdProvider.Error -> {
-                    showToast(it.error.toString())
+                    //showToast(it.error.toString())
                 }
             }
         }
@@ -125,6 +125,6 @@ class AddLocationFragment : DialogFragment() {
     }
 
     fun showToast(msg: String) {
-        //Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
     }
 }
