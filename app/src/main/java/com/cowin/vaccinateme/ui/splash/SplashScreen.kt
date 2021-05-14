@@ -25,7 +25,7 @@ import java.util.*
 
 class SplashScreen : AppCompatActivity() {
 
-    val delaySeconds: Long = 1500L
+    val delaySeconds: Long = 2000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -87,14 +87,12 @@ class HomeFragment : Fragment() {
             }.withAdListener(object : AdListener() {
                 override fun onAdFailedToLoad(p0: LoadAdError) {
                     super.onAdFailedToLoad(p0)
-                    Toast.makeText(requireContext(), p0.message, Toast.LENGTH_SHORT).show()
                     Log.e(TAG, "<<<<<<<<<<<<<<<<<<onAdFailedToLoad: ${p0}")
 
                 }
 
                 override fun onAdLoaded() {
                     super.onAdLoaded()
-                   /// Toast.makeText(requireContext(),"adLodedSuccessfully", Toast.LENGTH_SHORT).show()
                 }
             }).build()
 
