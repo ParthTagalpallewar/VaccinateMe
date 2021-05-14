@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.centers.CentersFragment">
 
     <com.google.android.gms.ads.AdView
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:adSize="BANNER"
+        android:visibility="gone"
         app:adUnitId="@string/test_ad_unit_id_banner" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -64,4 +66,4 @@
         android:text="Sessions Not Available"
         android:gravity="center"/>
 
-</RelativeLayout>
+</LinearLayout>
