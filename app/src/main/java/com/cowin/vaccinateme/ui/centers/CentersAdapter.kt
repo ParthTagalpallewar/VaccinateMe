@@ -16,7 +16,6 @@ import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.item_centers.view.*
 
-
 class CentersAdapter(
     val centersList: List<Any>,
     val onCenterClickListener: CenterClickListener
