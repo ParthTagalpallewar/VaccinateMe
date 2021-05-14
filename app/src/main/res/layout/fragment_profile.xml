@@ -37,9 +37,8 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="20dp"
                     android:paddingLeft="20dp"
-
-                    android:text="Pincode"
-                    android:textSize="30dp" />
+                    android:text="Pincode - "
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/profile_tv_showPin"
@@ -47,8 +46,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:hint="Not Available"
-                    android:textSize="20dp" />
+                    android:textSize="23sp" />
 
             </LinearLayout>
 
@@ -65,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:text="Add Pincode"
                 android:textColor="@color/colorwhite"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
 
 
