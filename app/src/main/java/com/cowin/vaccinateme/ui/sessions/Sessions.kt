@@ -4,20 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cowin.vaccinateme.R
-import com.cowin.vaccinateme.data.models.roomModels.RoomSessions
 import com.cowin.vaccinateme.data.repositionries.CentersRepositiory
-import com.cowin.vaccinateme.data.repositionries.UserDataRepositories
 import com.cowin.vaccinateme.ui.centers.SessionAdapter
 import com.cowin.vaccinateme.utils.AdsManager
+import com.cowin.vaccinateme.utils.templateAds.TemplateView
 import com.google.android.gms.ads.AdView
-import kotlinx.android.synthetic.main.fragment_sessions.*
 
 class Sessions : Fragment() {
 
@@ -33,9 +29,7 @@ class Sessions : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_sessions, container, false)
 
-        val adsManager = AdsManager(requireContext())
-        val mAdView = root.findViewById<AdView>(R.id.adViewSessions)
-        adsManager.createAds(mAdView)
+
 
         centerId = arguments?.getString("sessionId")!!
 
@@ -54,7 +48,24 @@ class Sessions : Fragment() {
         val repo = CentersRepositiory(requireContext())
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             val centersList = repo.getSessionsByCenterId(centerId)
-            val adapter = SessionAdapter(centersList)
+
+            val anyArrayList = ArrayList<Any>()
+            anyArrayList.clear()
+
+            for (i in centersList.indices) {
+                anyArrayList.add(i, centersList[i])
+            }
+
+            for (i in centersList.indices) {
+                if (i % 3 == 0) {
+                    TemplateView(requireContext()).apply {
+                        anyArrayList.add(i,this)
+                    }
+                }
+            }
+
+
+            val adapter = SessionAdapter(anyArrayList)
             recyclerView.adapter = adapter
 
 

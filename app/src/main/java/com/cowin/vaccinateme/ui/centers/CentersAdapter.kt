@@ -95,12 +95,12 @@ class CentersAdapter(
     inner class CenterViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            //todo handel click
-            /*    itemView.setOnClickListener {
+
+               itemView.setOnClickListener {
                     if (adapterPosition != RecyclerView.NO_POSITION) {
-                        onCenterClickListener.onCenterCLickedListener(centersList[adapterPosition].center_id)
+                        onCenterClickListener.onCenterCLickedListener((centersList[adapterPosition] as RoomCenters).center_id)
                     }
-                }*/
+                }
         }
 
 

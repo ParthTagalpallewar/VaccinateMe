@@ -7,17 +7,10 @@
     android:orientation="vertical"
     tools:context=".ui.sessions.Sessions">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewSessions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:adSize="BANNER"
-        app:adUnitId="@string/test_ad_unit_id_banner" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/adViewSessions"
         android:orientation="vertical">
 
         <LinearLayout
