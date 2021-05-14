@@ -4,9 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener
 import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 open class AdsManager {
 
@@ -39,25 +41,27 @@ open class AdsManager {
     }
 
 
-    /*
+}
 
-    //For Industrial Ads
+fun Context.showIntestrialAds(adKey:String="ca-app-pub-3940256099942544/1033173712") :MutableLiveData<ResultIntestrialAdProvider>{
+    var adRequest = AdRequest.Builder().build()
 
-    open fun createUnifiedAds(unitid: Int, listening: AdUnifiedListening?) {
-        val builder = AdLoader.Builder(context, context.getString(unitid))
-        builder.forUnifiedNativeAd(listening)
-        builder.withAdListener(listening)
-        val adload = builder.build()
-        adload.loadAd(AdRequest.Builder().build())
-    }
+    val liveData = MutableLiveData<ResultIntestrialAdProvider>()
 
-    open fun createUnifiedAds(numads: Int, unitid: Int, listening: AdUnifiedListening) {
-        val builder = AdLoader.Builder(context, context.getString(unitid))
-        builder.forUnifiedNativeAd(listening)
-        builder.withAdListener(listening)
-        val adload = builder.build()
-        adload.loadAds(AdRequest.Builder().build(), numads)
-        listening.adLoader = adload
-    }
-    */
+    InterstitialAd.load(this,adKey, adRequest, object : InterstitialAdLoadCallback() {
+        override fun onAdFailedToLoad(adError: LoadAdError) {
+            liveData.postValue(ResultIntestrialAdProvider.Error(adError))
+        }
+
+        override fun onAdLoaded(interstitialAd: InterstitialAd) {
+            liveData.postValue(ResultIntestrialAdProvider.Success(interstitialAd))
+        }
+    })
+
+    return  liveData
+}
+
+sealed class ResultIntestrialAdProvider(){
+    data class Success(var interstitialAd: InterstitialAd):ResultIntestrialAdProvider()
+    data class Error(var error : LoadAdError) : ResultIntestrialAdProvider()
 }

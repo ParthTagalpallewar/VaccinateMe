@@ -1,6 +1,7 @@
 package com.cowin.vaccinateme.ui.location
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,11 @@ import androidx.work.WorkManager
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.data.models.SettingsModel
 import com.cowin.vaccinateme.data.repositionries.UserDataRepositories
+import com.cowin.vaccinateme.utils.ResultIntestrialAdProvider
 import com.cowin.vaccinateme.utils.getCurrentDate
+import com.cowin.vaccinateme.utils.showIntestrialAds
 import kotlinx.android.synthetic.main.fragment_add_location.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -88,6 +92,15 @@ class AddLocationFragment : DialogFragment() {
             }
         }
 
+        requireContext().showIntestrialAds().observe(viewLifecycleOwner){
+            when(it){
+                is ResultIntestrialAdProvider.Success -> {
+                    it.interstitialAd.show(requireActivity())
+                }is ResultIntestrialAdProvider.Error -> {
+                    showToast(it.error.toString())
+                }
+            }
+        }
 
     }
 
