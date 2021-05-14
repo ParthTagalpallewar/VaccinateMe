@@ -7,6 +7,7 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/logo2"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo2"
@@ -37,6 +38,13 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-4790271832049759~2145860927"/>
+
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4790271832049759~2145860927"/>
+
+
 
         <service
             android:name=".service.MyFirebaseMessagingService"
