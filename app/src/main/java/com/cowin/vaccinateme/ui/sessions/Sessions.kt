@@ -1,5 +1,7 @@
 package com.cowin.vaccinateme.ui.sessions
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.data.repositionries.CentersRepositiory
 import com.cowin.vaccinateme.ui.centers.SessionAdapter
-import com.cowin.vaccinateme.utils.AdsManager
+import com.cowin.vaccinateme.utils.NUM_ROWS_FOR_AD
 import com.cowin.vaccinateme.utils.templateAds.TemplateView
-import com.google.android.gms.ads.AdView
+import kotlinx.android.synthetic.main.fragment_sessions.*
 
 class Sessions : Fragment() {
 
@@ -30,12 +32,20 @@ class Sessions : Fragment() {
         val root = inflater.inflate(R.layout.fragment_sessions, container, false)
 
 
-
         centerId = arguments?.getString("sessionId")!!
 
         recyclerView = root.findViewById<RecyclerView>(R.id.session_reycerview)
         recyclerView.layoutManager = (LinearLayoutManager(requireContext()))
         recyclerView.hasFixedSize()
+
+        website2.setOnClickListener {
+
+            val cowinWebsite = "https://www.cowin.gov.in/home"
+
+            Intent(Intent.ACTION_VIEW, Uri.parse(cowinWebsite)).apply {
+                startActivity(this)
+            }
+        }
 
         return root
     }
@@ -57,7 +67,7 @@ class Sessions : Fragment() {
             }
 
             for (i in centersList.indices) {
-                if (i % 3 == 0) {
+                if (i % NUM_ROWS_FOR_AD == 0) {
                     TemplateView(requireContext()).apply {
                         anyArrayList.add(i,this)
                     }

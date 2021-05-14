@@ -7,4 +7,5 @@
     <string name="test_ad_unit_id_native">ca-app-pub-3940256099942544/1033173712</string>
     <string name="prod_ad_unit_id_banner">ca-app-pub-4790271832049759/2039825810</string>
     <string name="prod_ad_unit_id_native">ca-app-pub-4790271832049759/5969362345</string>
+    <string name="book_vaccination_slot_now">Book Vaccination slot now</string>
 </resources>

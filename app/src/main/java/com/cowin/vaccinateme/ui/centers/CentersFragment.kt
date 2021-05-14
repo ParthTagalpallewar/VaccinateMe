@@ -16,6 +16,7 @@ import com.cowin.vaccinateme.data.models.roomModels.RoomCenters
 import com.cowin.vaccinateme.data.repositionries.CentersRepositiory
 import com.cowin.vaccinateme.data.repositionries.UserDataRepositories
 import com.cowin.vaccinateme.utils.AdsManager
+import com.cowin.vaccinateme.utils.NUM_ROWS_FOR_AD
 import com.cowin.vaccinateme.utils.templateAds.NativeTemplateStyle
 import com.cowin.vaccinateme.utils.templateAds.TemplateView
 import com.google.android.gms.ads.AdView
@@ -65,7 +66,7 @@ class CentersFragment : Fragment(), CentersAdapter.CenterClickListener {
             }
 
             for (i in centersList.indices) {
-                if (i % 3 == 0) {
+                if (i % NUM_ROWS_FOR_AD == 0) {
                     TemplateView(requireContext()).apply {
                         anyArrayList.add(i,this)
                     }

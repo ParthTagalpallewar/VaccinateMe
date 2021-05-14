@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.data.models.roomModels.RoomCenters
+import com.cowin.vaccinateme.utils.NUM_ROWS_FOR_AD
 import com.cowin.vaccinateme.utils.templateAds.NativeTemplateStyle
 import com.cowin.vaccinateme.utils.templateAds.TemplateView
 import com.google.android.gms.ads.AdLoader
@@ -74,7 +75,7 @@ class CentersAdapter(
     override fun getItemViewType(position: Int): Int {
         super.getItemViewType(position)
 
-        if (position % 3 == 0) {
+        if (position % NUM_ROWS_FOR_AD == 0) {
             return NATIVE_ADS_VIEW
         }
 

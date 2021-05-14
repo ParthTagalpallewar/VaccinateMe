@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.data.models.roomModels.RoomCenters
 import com.cowin.vaccinateme.data.models.roomModels.RoomSessions
+import com.cowin.vaccinateme.utils.NUM_ROWS_FOR_AD
 import com.cowin.vaccinateme.utils.templateAds.NativeTemplateStyle
 import com.cowin.vaccinateme.utils.templateAds.TemplateView
 import com.google.android.gms.ads.AdLoader
@@ -94,7 +95,7 @@ class SessionAdapter(val sessionsList: ArrayList<Any>) : RecyclerView.Adapter<Re
     override fun getItemViewType(position: Int): Int {
         super.getItemViewType(position)
 
-        if (position % 3 == 0) {
+        if (position % NUM_ROWS_FOR_AD == 0) {
             return CentersAdapter.NATIVE_ADS_VIEW
         }
 
