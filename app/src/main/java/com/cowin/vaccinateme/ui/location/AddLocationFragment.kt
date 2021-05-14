@@ -125,6 +125,6 @@ class AddLocationFragment : DialogFragment() {
     }
 
     fun showToast(msg: String) {
-        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
     }
 }

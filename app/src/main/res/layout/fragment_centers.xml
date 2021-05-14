@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,19 +8,11 @@
     android:orientation="vertical"
     tools:context=".ui.centers.CentersFragment">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewCenters"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:adSize="BANNER"
-        android:visibility="gone"
-        app:adUnitId="@string/ad_unit_id_banner" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/center_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/adViewCenters"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
@@ -66,4 +58,4 @@
         android:text="Sessions Not Available"
         android:gravity="center"/>
 
-</LinearLayout>
+</RelativeLayout>

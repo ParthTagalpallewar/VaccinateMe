@@ -1,6 +1,7 @@
 package com.cowin.vaccinateme.ui.centers
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -89,13 +90,17 @@ class CentersFragment : Fragment(), CentersAdapter.CenterClickListener {
                 center_add_btn.setOnClickListener {
                     findNavController().navigate(R.id.navigation_notifications)
                 }
+
+                Log.e("TAG", "decideVisiblity: 1", )
             } else if (centerList.isEmpty()) {
 
                 emptySession.visibility = View.VISIBLE
+                Log.e("TAG", "decideVisiblity: 2", )
 
             } else {
                 addPincodeRelativeLayout.visibility = View.GONE
                 emptySession.visibility = View.GONE
+                Log.e("TAG", "decideVisiblity: 3", )
             }
         }
     }
