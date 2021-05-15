@@ -35,7 +35,10 @@ class HomeFragment : Fragment() {
 
 
         requireContext().showNativeAds(getString(R.string.ad_unit_id_native)){
-            my_template.buildProperties(it)
+            try {
+                my_template.buildProperties(it)
+            } catch (e: NullPointerException) {
+            }
         }
 
         return root
