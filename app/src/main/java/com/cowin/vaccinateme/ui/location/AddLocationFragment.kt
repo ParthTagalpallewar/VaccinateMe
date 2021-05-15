@@ -46,7 +46,7 @@ class AddLocationFragment : DialogFragment() {
         add_addapp.setOnClickListener {
             val pincode = add_et_package.text.trim().toString()
 
-            //if pincode is valid
+
             if (checkPinCode(pincode)) {
                 viewLifecycleOwner.lifecycleScope.launch {
                     val userRepository = UserDataRepositories(requireContext())

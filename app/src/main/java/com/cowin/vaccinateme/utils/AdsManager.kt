@@ -3,12 +3,18 @@ package com.cowin.vaccinateme.utils
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.cowin.vaccinateme.R
+import com.cowin.vaccinateme.utils.templateAds.NativeTemplateStyle
+import com.cowin.vaccinateme.utils.templateAds.TemplateView
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.android.gms.ads.nativead.NativeAd
+import kotlinx.android.synthetic.main.fragment_home.*
 
 open class AdsManager {
 
@@ -64,4 +70,27 @@ fun Context.showIntestrialAds(adKey:String) :MutableLiveData<ResultIntestrialAdP
 sealed class ResultIntestrialAdProvider(){
     data class Success(var interstitialAd: InterstitialAd):ResultIntestrialAdProvider()
     data class Error(var error : LoadAdError) : ResultIntestrialAdProvider()
+}
+
+fun Context.showNativeAds(key:String,method : ( nativeAds:NativeAd) -> Unit){
+    MobileAds.initialize(this)
+    val adLoader = AdLoader.Builder(this, key)
+        .forNativeAd { ad: NativeAd ->
+
+
+            method.invoke(ad)
+
+
+        }.build()
+
+    adLoader.loadAd(AdRequest.Builder().build())
+}
+
+fun TemplateView.buildProperties(ad:NativeAd){
+    val styles = NativeTemplateStyle.Builder().build()
+    this.apply {
+        setStyles(styles)
+        visibility = View.VISIBLE
+        setNativeAd(ad)
+    }
 }
