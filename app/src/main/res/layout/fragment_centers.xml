@@ -46,6 +46,14 @@
         android:layout_below="@id/msgCenters"
         tools:listitem="@layout/item_centers" />
 
+    <Button
+        android:id="@+id/retryNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/center_recycler_view"
+        android:layout_centerInParent="true"
+        android:text="Check availabilty now"
+        android:textSize="15sp" />
 
     <RelativeLayout
         android:id="@+id/centersAddPincodeLayout"

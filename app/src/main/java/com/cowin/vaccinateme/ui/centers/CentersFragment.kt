@@ -11,13 +11,19 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.WorkerParameters
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.data.models.roomModels.RoomCenters
 import com.cowin.vaccinateme.data.repositionries.CentersRepositiory
 import com.cowin.vaccinateme.data.repositionries.UserDataRepositories
+import com.cowin.vaccinateme.ui.location.FindCentersWorker
 import com.cowin.vaccinateme.utils.NUM_ROWS_FOR_AD
 import com.cowin.vaccinateme.utils.templateAds.TemplateView
 import kotlinx.android.synthetic.main.fragment_centers.*
+import java.util.concurrent.TimeUnit
 
 class CentersFragment : Fragment(), CentersAdapter.CenterClickListener {
 
@@ -47,7 +53,7 @@ class CentersFragment : Fragment(), CentersAdapter.CenterClickListener {
         val repo = CentersRepositiory(requireContext())
         val settings = UserDataRepositories(requireContext())
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            val centersList = repo.getAllCenters()
+            var centersList = repo.getAllCenters()
             var pincode: String = settings.getUserData()?.pincode.toString()
 
             if (pincode == "null") {
@@ -57,6 +63,8 @@ class CentersFragment : Fragment(), CentersAdapter.CenterClickListener {
 
             val anyArrayList = ArrayList<Any>()
             anyArrayList.clear()
+
+            centersList = centersList.sortedByDescending { it.totalAvailability }
 
             for (i in centersList.indices) {
                 anyArrayList.add(i, centersList[i])
@@ -75,6 +83,14 @@ class CentersFragment : Fragment(), CentersAdapter.CenterClickListener {
 
             decideVisiblity(centersList)
 
+            retryNow.setOnClickListener {
+                val sendLogsWorkRequest = PeriodicWorkRequestBuilder<FindCentersWorker>(15, TimeUnit.MINUTES).build()
+                WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(
+                    "sendLogs",
+                    ExistingPeriodicWorkPolicy.REPLACE,
+                    sendLogsWorkRequest
+                )
+            }
         }
 
     }
