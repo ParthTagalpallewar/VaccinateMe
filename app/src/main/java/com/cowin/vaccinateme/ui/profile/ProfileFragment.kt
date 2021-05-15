@@ -49,7 +49,7 @@ class ProfileFragment : Fragment() {
         }
 
         about.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_home_to_info)
+            findNavController().navigate(R.id.infoFragment)
         }
     }
 

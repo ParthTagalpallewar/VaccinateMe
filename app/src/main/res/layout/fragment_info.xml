@@ -37,6 +37,7 @@
                 android:layout_below="@id/about"
                 android:background="@drawable/button_green"
                 android:text="okay"
+                android:layout_marginTop="30dp"
                 android:textColor="@color/colorwhite"
                 android:textSize="20sp" />
 
