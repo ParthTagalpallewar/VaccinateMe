@@ -48,6 +48,9 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_navigation_notifications_to_addLocationFragment)
         }
 
+        about.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_info)
+        }
     }
 
     fun getUserData() {
@@ -59,7 +62,7 @@ class ProfileFragment : Fragment() {
                     profile_btn_addPin.text = " Add PinCode"
                     profile_tv_showPin.text = " Not Added "
                 }else{
-                    profile_btn_addPin.text = "Update"
+                    profile_btn_addPin.text = "Update pincode"
                     profile_tv_showPin.text = it.pincode
                 }
             }

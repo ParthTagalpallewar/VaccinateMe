@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.cowin.vaccinateme.R
 import com.cowin.vaccinateme.utils.AdsManager
 import com.cowin.vaccinateme.utils.buildProperties
@@ -19,6 +20,8 @@ import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.nativead.NativeAd
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.my_template
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class HomeFragment : Fragment() {
 
@@ -36,6 +39,14 @@ class HomeFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        msgInfo.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_info)
+        }
     }
 
 }

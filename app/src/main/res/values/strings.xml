@@ -2,7 +2,7 @@
     <string name="app_name">Vaccinate Me</string>
     <string name="title_home">Home</string>
     <string name="title_centers">Vaccine Centers</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_profile">Settings</string>
     <string name="book_vaccination_slot_now">Book Vaccination slot now</string>
 
 <!--

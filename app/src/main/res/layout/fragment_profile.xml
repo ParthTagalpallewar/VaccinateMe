@@ -67,23 +67,38 @@
                 android:text="Add Pincode"
                 android:textColor="@color/colorwhite"
                 android:textSize="20sp" />
-
-
-
-            <ImageView
-                android:id="@+id/visionary"
-                android:layout_width="match_parent"
-                android:layout_height="210dp"
-                android:layout_gravity="bottom"
-                android:src="@drawable/visionary"
-                android:layout_alignParentBottom="true"/>
-
-
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:text="About this app"
+                android:textColor="@color/teal_700"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
     </ScrollView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/visionary"
+        android:layout_marginBottom="-5dp"
+        android:layout_marginLeft="10dp"
+        android:text="Checkout other apps:"
+        android:textColor="@color/gnt_blue"
+        android:textSize="16sp" />
+    <ImageView
+        android:id="@+id/visionary"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/visionary" />
 
 
 </RelativeLayout>

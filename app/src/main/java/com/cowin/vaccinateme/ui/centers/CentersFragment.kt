@@ -45,8 +45,15 @@ class CentersFragment : Fragment(), CentersAdapter.CenterClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         val repo = CentersRepositiory(requireContext())
+        val settings = UserDataRepositories(requireContext())
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             val centersList = repo.getAllCenters()
+            var pincode: String = settings.getUserData()?.pincode.toString()
+
+            if (pincode == "null") {
+                pincode = "None"
+            }
+            msgPincode.setText(pincode)
 
             val anyArrayList = ArrayList<Any>()
             anyArrayList.clear()

@@ -20,7 +20,7 @@ import java.util.*
 
 class SplashScreen : AppCompatActivity() {
 
-    val delaySeconds: Long = 2000L
+    val delaySeconds: Long = 1500L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +31,13 @@ class SplashScreen : AppCompatActivity() {
         img_vaccine.animation = AnimationUtils.loadAnimation(this, R.anim.vaccine_animation)
         appName.animation = AnimationUtils.loadAnimation(this, R.anim.appname_animation)
 
-        val offsets = IntArray(root.childCount) { Random().nextInt() % 800 }.asList()
+        val offsets = IntArray(root.childCount) { Random().nextInt() % 600 }.asList()
         var i = 0
         for (view in root.children) {
             if (view.tag == "virus") {
                 var anim = AnimationUtils.loadAnimation(this, R.anim.covid_animation)
                 anim.interpolator = AccelerateDecelerateInterpolator()
-                anim.startOffset = (700 + offsets[i++]).toLong()
+                anim.startOffset = (900 + offsets[i++]).toLong()
                 anim.setAnimationListener(object: Animation.AnimationListener {
                     override fun onAnimationStart(animation: Animation?) {
                     }

@@ -72,7 +72,7 @@ class SessionAdapter(val sessionsList: ArrayList<Any>) : RecyclerView.Adapter<Re
             itemView.itemSession_tv_minAge.text = center.min_age_limit
 
             val singleDate = center.date.split("-")
-            val date = SimpleDateFormat("mm-dd-yyyy").parse(center.date)
+            val date = SimpleDateFormat("dd-MM-yyyy").parse(center.date)
             itemView.itemSession_tv_year.text = singleDate[2]
             itemView.itemSession_tv_date.text = singleDate[0]
             itemView.itemSession_tv_month.text = SimpleDateFormat("MMM").format(date)

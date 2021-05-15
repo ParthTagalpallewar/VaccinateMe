@@ -9,16 +9,41 @@
     tools:context=".ui.centers.CentersFragment">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/center_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:id="@+id/msgCenters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:text="Vaccination centers for "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/msgPincode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/msgCenters"
+        android:text="xxxxxx"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/center_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_below="@id/msgCenters"
         tools:listitem="@layout/item_centers" />
 
 
@@ -34,8 +59,9 @@
             android:id="@+id/abc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Please Add PinCode"
-            android:gravity="center"/>
+            android:textSize="22sp" />
 
         <Button
             android:layout_below="@+id/abc"

@@ -19,7 +19,6 @@ import com.cowin.vaccinateme.utils.ResultIntestrialAdProvider
 import com.cowin.vaccinateme.utils.getCurrentDate
 import com.cowin.vaccinateme.utils.showIntestrialAds
 import kotlinx.android.synthetic.main.fragment_add_location.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

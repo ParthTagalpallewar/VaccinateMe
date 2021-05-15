@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/addFrag_relative"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.location.AddLocationFragment"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/addApp_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorwhite"
+        app:cardCornerRadius="9dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:text="This app will notify you when a vaccination slot is available in your area.\n\nSimply put in your pincode and the app will periodically check the cowin website servers in the background. When a slot is available, it will notify you.\n\nNote that the booking gets over very fast and you should book quickly once a slot becomes available.\n\nMeanwhile, stay home, stay safe :)"/>
+
+            <Button
+                android:id="@+id/okayBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about"
+                android:background="@drawable/button_green"
+                android:text="okay"
+                android:textColor="@color/colorwhite"
+                android:textSize="20sp" />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
+

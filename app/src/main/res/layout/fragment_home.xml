@@ -22,14 +22,14 @@
                 android:src="@drawable/home_vaccine" />
 
             <TextView
+                android:id="@+id/msgInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:text="Get Notified When Sessions Available"
-                android:textSize="22dp"
-                android:textColor="@color/black"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp" />
+                android:textColor="@color/teal_700"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
             <!--  This is your template view -->

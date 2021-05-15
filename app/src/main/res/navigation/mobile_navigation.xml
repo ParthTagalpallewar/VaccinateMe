@@ -9,7 +9,17 @@
         android:id="@+id/navigation_home"
         android:name="com.cowin.vaccinateme.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_info"
+            app:destination="@id/infoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.cowin.vaccinateme.ui.home.InfoFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_info"/>
 
     <fragment
         android:id="@+id/navigation_dashboard"
