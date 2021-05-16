@@ -21,15 +21,14 @@
                 android:layout_height="250dp"
                 android:src="@drawable/home_vaccine" />
 
-            <TextView
+            <Button
                 android:id="@+id/msgInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
+                android:background="@drawable/button"
                 android:text="Get Notified When Sessions Available"
-                android:textColor="@color/teal_700"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
 
             <!--  This is your template view -->

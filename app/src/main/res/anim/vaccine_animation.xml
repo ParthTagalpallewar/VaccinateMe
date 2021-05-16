@@ -6,19 +6,14 @@
         android:fromAlpha="0.5"
         android:toAlpha="1.0"
         />
-    <translate
-        android:duration="700"
-        android:fromXDelta="14%"
-        android:toXDelta="0%"
-        android:fromYDelta="14%"
-        android:toYDelta="0%"
-        />
     <scale
         android:duration="700"
-        android:fromXScale="0.8"
+        android:fromXScale="0.6"
         android:toXScale="1.0"
-        android:fromYScale="0.8"
+        android:pivotX="50%"
+        android:fromYScale="0.6"
         android:toYScale="1.0"
+        android:pivotY="50%"
         />
 
 </set>

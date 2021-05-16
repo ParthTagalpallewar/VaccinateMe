@@ -60,7 +60,7 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
 
                 //getting latest Appointment
                 val latestAppointments = userRepo.getAppointments(pincode, getCurrentDate())
-                logAppointments(latestAppointments)
+                //logAppointments(latestAppointments)
 
                 if (latestAppointments.isSuccessful) {
 
@@ -79,9 +79,9 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
 
                         val notify = checkToNotify(latestAppointments)
                         if (latestAppointmentModel != null) {
-                            if (checkUpdateNeeded(latestAppointmentModel, sessionsInRoomDatabase)) {
+                            //if (checkUpdateNeeded(latestAppointmentModel, sessionsInRoomDatabase)) {
                                 saveAppointmentsInDatabase(latestAppointments)
-                            }
+                            //}
                         }
 
                         if (notify) {
@@ -203,11 +203,12 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
 
     }
 
-    private fun alreadySaved(session: RoomSessions): Boolean {
-        for (i in sessionsInRoomDatabase) {
-            if (i.session_id == session.session_id) {
-                Log.e("TAG", "DEBUG: >>>>>>>>>>>>> ${i.available_capacity} ${session.available_capacity} ${session.session_id}")
-                if (session.available_capacity > i.available_capacity) {
+    private fun alreadySaved(newSession: RoomSessions): Boolean {
+        for (dbSession in sessionsInRoomDatabase) {
+            if (dbSession.session_id == newSession.session_id) {
+                //Log.e("TAG", "DEBUG: >>>>>>>>>>>>> ${i.available_capacity} ${session.available_capacity} ${session.session_id}")
+                if (dbSession.available_capacity == "0") {
+                    Log.e("NOTIFY", "${newSession.session_id} Capacity increased from zero to ${newSession.available_capacity}  treat as new")
                     return false
                 } else {
                     return true
@@ -229,7 +230,7 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
                 if (alreadySaved(session)) {
                     continue
                 }
-
+                Log.e("NOTIFY", "${session.session_id} New session with capacity = ${session.available_capacity}, notify = true")
                 return true
             }
 

@@ -26,9 +26,14 @@
                 android:id="@+id/about"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_margin="10dp"
-                android:text="This app will notify you when a vaccination slot is available in your area.\n\nSimply put in your pincode and the app will periodically check the cowin website servers in the background. When a slot is available, it will notify you.\n\nNote that the booking gets over very fast and you should book quickly once a slot becomes available.\n\nMeanwhile, stay home, stay safe :)"/>
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="This app will notify you when a vaccination slot is available in your area.\n\nSimply put in your pincode in the settings and the app will periodically check the cowin website servers in the background. When a slot is available, it will notify you.\n\nNote that the booking gets over very fast and you should book quickly once a slot becomes available.\n\nMeanwhile, stay home, stay safe :)"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/okayBtn"
