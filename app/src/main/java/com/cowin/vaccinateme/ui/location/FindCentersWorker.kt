@@ -60,7 +60,7 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
 
                 //getting latest Appointment
                 val latestAppointments = userRepo.getAppointments(pincode, getCurrentDate())
-                //logAppointments(latestAppointments)
+                logAppointments(latestAppointments)
 
                 if (latestAppointments.isSuccessful) {
 
@@ -131,29 +131,10 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
         if (data != null) {
             for (centers in data) {
 
-                Log.e(
-                    "centersLog", """logAppointments:
-                    |
-                    |Centers Name :-  ${centers.name} 
-                    |Session Size : - ${centers.sessions.size}
-                    |
-                    | """"
-                )
+                Log.e("LOG", "Center ID ${centers.center_id}, name ${centers.name}, sessions ${centers.sessions.size}")
                 for (session in centers.sessions) {
-                    if (session.available_capacity == "0") {
-                        continue
-                    }
-                    Log.e(
-                        "centersLog", """logAppointments:
-                    |
-                    |Session ID :-  ${session.session_id} 
-                    |Session Size : - ${session.date}
-                    |Capacity:- ${session.available_capacity}
-                    |
-                    | """"
-                    )
+                    Log.e("LOG", "Session ID ${session.session_id}, date ${session.date}, available ${session.available_capacity}")
                 }
-
             }
         }
     }
