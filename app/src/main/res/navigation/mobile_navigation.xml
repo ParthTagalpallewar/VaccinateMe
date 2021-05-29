@@ -39,13 +39,19 @@
         <action
             android:id="@+id/action_navigation_notifications_to_addLocationFragment"
             app:destination="@id/addLocationFragment" />
+        <action
+            android:id="@+id/action_navigation_location_to_sessions"
+            app:destination="@id/navigation_dashboard" />
+
     </fragment>
 
     <fragment
         android:id="@+id/addLocationFragment"
         android:name="com.cowin.govaccine.ui.location.AddLocationFragment"
         android:label="Add Pin Code"
-        tools:layout="@layout/fragment_add_location" />
+        tools:layout="@layout/fragment_add_location">
+
+    </fragment>>
 
     <fragment
         android:id="@+id/sessions2"

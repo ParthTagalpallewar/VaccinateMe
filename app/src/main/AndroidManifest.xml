@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo2"
         android:supportsRtl="true"
-        android:theme="@style/Theme.VaccinateMe">
+        android:theme="@style/Theme.GoVaccine">
         <activity android:name="com.cowin.govaccine.ui.splash.SplashScreen"
             android:screenOrientation="portrait"
             >

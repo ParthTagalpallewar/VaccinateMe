@@ -9,6 +9,8 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.util.Log
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.cowin.govaccine.R
@@ -84,6 +86,7 @@ class FindCentersWorker(context: Context, workerParams: WorkerParameters) :
                         if (notify) {
                             sendNotification()
                         }
+
                     }
 
 

@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:721425827629:android:5ce9e7ac198fd87be7f5a4",
         "android_client_info": {
-          "package_name": "com.cowin.vaccinateme"
+          "package_name": "com.cowin.govaccine"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "721425827629-7kdiqlmic3dj11bja3b57if6oub19f2e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.cowin.vaccinateme",
+            "package_name": "com.cowin.govaccine",
             "certificate_hash": "25e7f3649202bf3b771d817bbf23ee51c4741c33"
           }
         },

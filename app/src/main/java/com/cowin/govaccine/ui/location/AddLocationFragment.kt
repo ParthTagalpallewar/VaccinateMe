@@ -87,7 +87,6 @@ class AddLocationFragment : DialogFragment() {
 
                         findNavController().popBackStack()
 
-
                     }
 
 
