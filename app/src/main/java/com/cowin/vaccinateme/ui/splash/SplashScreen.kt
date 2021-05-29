@@ -34,7 +34,7 @@ class SplashScreen : AppCompatActivity() {
         val offsets = IntArray(root.childCount) { Random().nextInt() % 600 }.asList()
         var i = 0
         for (view in root.children) {
-            if (view.tag == "virus") {
+            if (view.tag == "v_fade") {
                 var anim = AnimationUtils.loadAnimation(this, R.anim.covid_animation)
                 anim.interpolator = AccelerateDecelerateInterpolator()
                 anim.startOffset = (900 + offsets[i++]).toLong()

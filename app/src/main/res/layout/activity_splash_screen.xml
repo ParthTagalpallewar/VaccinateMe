@@ -38,20 +38,20 @@
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
         android:layout_marginBottom="40dp"
-        android:tag="virus"
+        android:tag="v_fade"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/coronavirus_red" />
+        app:srcCompat="@drawable/v_red" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="580dp"
-        android:tag="virus"
+        android:tag="v_fade"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/coronavirus_red" />
+        app:srcCompat="@drawable/v_red" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -62,10 +62,10 @@
         android:layout_marginBottom="192dp"
         android:scaleX="0.5"
         android:scaleY="0.5"
-        android:tag="virus"
+        android:tag="v_fade"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/coronavirus_red" />
+        app:srcCompat="@drawable/v_red" />
 
     <ImageView
         android:id="@+id/imageView10"
@@ -76,10 +76,10 @@
         android:layout_marginBottom="568dp"
         android:scaleX="0.35"
         android:scaleY="0.35"
-        android:tag="virus"
+        android:tag="v_fade"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/coronavirus_red" />
+        app:srcCompat="@drawable/v_red" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -90,10 +90,10 @@
         android:layout_marginBottom="408dp"
         android:scaleX="0.5"
         android:scaleY="0.5"
-        android:tag="virus"
+        android:tag="v_fade"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/coronavirus_red" />
+        app:srcCompat="@drawable/v_red" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -104,10 +104,10 @@
         android:layout_marginBottom="48dp"
         android:scaleX="0.7"
         android:scaleY="0.7"
-        android:tag="virus"
+        android:tag="v_fade"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/coronavirus_red" />
+        app:srcCompat="@drawable/v_red" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -118,10 +118,10 @@
         android:layout_marginBottom="312dp"
         android:scaleX="0.3"
         android:scaleY="0.3"
-        android:tag="virus"
+        android:tag="v_fade"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/coronavirus_red" />
+        app:srcCompat="@drawable/v_red" />
 
     <TextView
         android:id="@+id/appName"
