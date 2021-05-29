@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.cowin.vaccinateme">
+    package="com.cowin.govaccine">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,7 +13,7 @@
         android:roundIcon="@drawable/logo2"
         android:supportsRtl="true"
         android:theme="@style/Theme.VaccinateMe">
-        <activity android:name=".ui.splash.SplashScreen"
+        <activity android:name="com.cowin.govaccine.ui.splash.SplashScreen"
             android:screenOrientation="portrait"
             >
             <intent-filter>
@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.cowin.govaccine.ui.main.MainActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name" />
 
@@ -43,7 +43,7 @@
             android:value="ca-app-pub-4790271832049759~2145860927"/>
 
          <service
-            android:name=".service.MyFirebaseMessagingService"
+            android:name="com.cowin.govaccine.service.MyFirebaseMessagingService"
             android:exported="false"
             tools:ignore="Instantiatable">
             <intent-filter>

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.cowin.vaccinateme.ui.home.HomeFragment"
+        android:name="com.cowin.govaccine.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -17,13 +17,13 @@
 
     <fragment
         android:id="@+id/infoFragment"
-        android:name="com.cowin.vaccinateme.ui.home.InfoFragment"
+        android:name="com.cowin.govaccine.ui.home.InfoFragment"
         android:label="About"
         tools:layout="@layout/fragment_info"/>
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.cowin.vaccinateme.ui.centers.CentersFragment"
+        android:name="com.cowin.govaccine.ui.centers.CentersFragment"
         android:label="@string/title_centers"
         tools:layout="@layout/fragment_centers" >
         <action
@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.cowin.vaccinateme.ui.profile.ProfileFragment"
+        android:name="com.cowin.govaccine.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -43,13 +43,13 @@
 
     <fragment
         android:id="@+id/addLocationFragment"
-        android:name="com.cowin.vaccinateme.ui.location.AddLocationFragment"
+        android:name="com.cowin.govaccine.ui.location.AddLocationFragment"
         android:label="Add Pin Code"
         tools:layout="@layout/fragment_add_location" />
 
     <fragment
         android:id="@+id/sessions2"
-        android:name="com.cowin.vaccinateme.ui.sessions.Sessions"
+        android:name="com.cowin.govaccine.ui.sessions.Sessions"
         android:label="Vaccine Sessions"
         tools:layout="@layout/fragment_sessions" >
         <argument
