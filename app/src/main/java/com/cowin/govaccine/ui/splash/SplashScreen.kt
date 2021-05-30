@@ -35,7 +35,7 @@ class SplashScreen : AppCompatActivity() {
         var i = 0
         for (view in root.children) {
             if (view.tag == "v_fade") {
-                var anim = AnimationUtils.loadAnimation(this, R.anim.covid_animation)
+                var anim = AnimationUtils.loadAnimation(this, R.anim.v_animation)
                 anim.interpolator = AccelerateDecelerateInterpolator()
                 anim.startOffset = (900 + offsets[i++]).toLong()
                 anim.setAnimationListener(object: Animation.AnimationListener {
