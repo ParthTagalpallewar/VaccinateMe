@@ -40,7 +40,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4790271832049759~2145860927"/>
+            android:value="ca-app-pub-4790271832049759~4957658844"/>
 
          <service
             android:name="com.cowin.govaccine.service.MyFirebaseMessagingService"

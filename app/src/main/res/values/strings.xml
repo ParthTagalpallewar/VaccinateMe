@@ -7,9 +7,9 @@
 
 <!--
 Production IDs:
-    <string name="ad_unit_id_banner">ca-app-pub-4790271832049759/2039825810</string>
-    <string name="ad_unit_id_interstitial">ca-app-pub-4790271832049759/5216136578</string>
-    <string name="ad_unit_id_native">ca-app-pub-4790271832049759/5969362345</string>
+    <string name="ad_unit_id_banner">ca-app-pub-4790271832049759/3480640233</string>
+    <string name="ad_unit_id_interstitial">ca-app-pub-4790271832049759/8349823532</string>
+    <string name="ad_unit_id_native">ca-app-pub-4790271832049759/5494707283</string>
 Test IDs:
     <string name="ad_unit_id_banner">ca-app-pub-3940256099942544/6300978111</string>
     <string name="ad_unit_id_interstitial">ca-app-pub-3940256099942544/1033173712</string>
